@@ -29,6 +29,8 @@ Like many other operating systems, Zephyr provides:
     - Sensor drivers
     
 ![Arch](build-config-phase.svg)
+
+
 The Zephyr system architecture. (Source: Zephyr.org)
 
 
