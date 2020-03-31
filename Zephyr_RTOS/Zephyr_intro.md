@@ -17,13 +17,14 @@ The other quite popular embedded OS is ARM’s Mbed OS. Specific feature of Mbed
 Apache Mynewt OS is another OS to mention in this context. Mynewt comes with a full implementation of the BLE stack and supports different boards which range, however, is rather limited.
 Generally, choice of an embedded OS heavily depends on the specific use case. Therefore, there is no single recipe or single OS of preference to be recommended. Discussion of pros and cons of different OS is out of scope of this blog and focus is made on Zephyr OS specifics and author’s own experience acquired while working with Zephyr OS.
 Like many other operating systems, Zephyr provides:
-    • Secure bootloader (MCU Boot)
-    • Kernel
-    • Network stacks
-    • File systems (NFFS, LittleFS, NVS)
-    • Middleware (including OTA mechanism and LwM2M client functionality)
-    • Device drivers
-    • Sensor drivers
+
+    * Secure bootloader (MCU Boot)
+    * Kernel
+    * Network stacks
+    * File systems (NFFS, LittleFS, NVS)
+    * Middleware (including OTA mechanism and LwM2M client functionality)
+    * Device drivers
+    * Sensor drivers
     
     ![Arch](build-config-phase.svg)
 
@@ -35,16 +36,21 @@ Still, what makes Zephyr OS unique as compared to other OS? Below is the brief l
 
 1. Supported boards
 	At the moment this blog is written a number of boards supported by Zephyr was around 170, much more than any another embedded OS has. Why it is important? Because it is very convenient. If due to some reasons decision is made to move to another hardware device the one thing to  do (at least theoretically) is to inform Zephyr compiler which board the code is to be compiled for. Otherwise, without Zephyr or other embedded OS supporting multiple boards, it’s just a start of painful process of getting familiar with board specifics, OS specifics, building toolchain, IDE, etc. Thus, Zephyr essentially reduces time and efforts while moving to another board.
+	
 2. Scalability
 	Zephyr is a highly configurable and modular OS that implements memory protection (even for platforms without an MMU/MPU). It uses Device Tree Support (DTS) only during compile time. Powerful configuration tool allows flexible inclusion of only those features which are really needed in specific application. Memory footprint can be as low as 8k.
 	The other specific feature of Zephyr is that it has only one address space. It means that the application code and the kernel are combined in the same binary compilation. 
+	
 3. Build toolchain
 	Being intrinsically cross-platform project, Zephyr naturally uses CMake build system. It also extensively uses command line tool named west. West is used for building, flashing and debugging applications as well as Zephyr repository manager.
 	In general, application configuration step is rather complicated in Zephyr. It extensively uses multi-level hierarchical configuration approach. [Here](https://docs.zephyrproject.org/latest/guides/build/index.html) is the link to configuration build overview from official Zephyr documentation page. It will be considered in more details in the next blog. For now, it’s worth stating that it includes Device Tree Compilation step resulting in generation of application specific header files – user need not writing header file manually.
+	
 4.  Communication interfaces and device drivers
 	Zephyr support presently includes Bluetooth, Bluetooth LE 5.0, Ethernet, 802.15.4, Wi-Fi, IPv4/IPv6, 6LoWPAN, Thread, and NFC. 
+	
 5. Sensor support
 	Expectedly, Zephyr has great sensors support with high level of abstraction. The process goes smoothly during enabling sensor which is already supported by Zephyr. List of supported boards and sensors is very rich. However,  if new sensor is to be enabled on a custom board the process turns out to be a little complicated. An issue of implementing new sensor support on Zephyr will be addressed in detail in the next blog.
+	
 6. Zephyr support and updates.
 	Zephyr OS has great SDK and is very well documented. It is permanently developing project and new releases are issued quite frequently. The scope of the project is very wide so that along with rather frequent updates it is a separate task to track all changes and comments. And sometimes application development can stuck for an indefinite while… Author’s personally experienced this when at some time started observing unexpected device resets. Hours were spent for debugging and naturally reasons of the problem were first searched in application code. However, after of couple of debug weeks the reason was localized to be in Bluetooth controller side part. Only at that moment decision was made to update Zephyr to the newest version. And voila – resets magically disappeared and problem was solved.
 	Nevertheless, general conclusion is that Zephyr OS is very powerful and convenient instrument for embedded application development and is highly recommended for use.
