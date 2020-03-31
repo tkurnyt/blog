@@ -14,20 +14,21 @@ While Linux vs Zephyr choice for resource-constrained systems is quite obvious, 
 Probably the most powerful embedded OS now is FreeRTOS. It got even more support since being acquired by Amazon in 2017. Being just a bare operating system it intrinsically lacks such things as  device drivers, file systems, crypto modules, network stacks, middleware, and a bootloader. Therefore, they must be added from the other sources. It is rather essential drawback in some use cases.
 
 The other quite popular embedded OS is ARM’s Mbed OS. Specific feature of Mbed OS is that it is compiled on a remote server using the ARMCC C/C++ compiler. However, being provided by ARM, it obviously does not support the other popular IoT platforms.
+
 Apache Mynewt OS is another OS to mention in this context. Mynewt comes with a full implementation of the BLE stack and supports different boards which range, however, is rather limited.
+
 Generally, choice of an embedded OS heavily depends on the specific use case. Therefore, there is no single recipe or single OS of preference to be recommended. Discussion of pros and cons of different OS is out of scope of this blog and focus is made on Zephyr OS specifics and author’s own experience acquired while working with Zephyr OS.
 Like many other operating systems, Zephyr provides:
 
-    * Secure bootloader (MCU Boot)
-    * Kernel
-    * Network stacks
-    * File systems (NFFS, LittleFS, NVS)
-    * Middleware (including OTA mechanism and LwM2M client functionality)
-    * Device drivers
-    * Sensor drivers
+    - Secure bootloader (MCU Boot)
+    - Kernel
+    - Network stacks
+    - File systems (NFFS, LittleFS, NVS)
+    - Middleware (including OTA mechanism and LwM2M client functionality)
+    - Device drivers
+    - Sensor drivers
     
-    ![Arch](build-config-phase.svg)
-
+![Arch](build-config-phase.svg)
 The Zephyr system architecture. (Source: Zephyr.org)
 
 
@@ -53,6 +54,8 @@ Still, what makes Zephyr OS unique as compared to other OS? Below is the brief l
 	
 6. Zephyr support and updates.
 	Zephyr OS has great SDK and is very well documented. It is permanently developing project and new releases are issued quite frequently. The scope of the project is very wide so that along with rather frequent updates it is a separate task to track all changes and comments. And sometimes application development can stuck for an indefinite while… Author’s personally experienced this when at some time started observing unexpected device resets. Hours were spent for debugging and naturally reasons of the problem were first searched in application code. However, after of couple of debug weeks the reason was localized to be in Bluetooth controller side part. Only at that moment decision was made to update Zephyr to the newest version. And voila – resets magically disappeared and problem was solved.
+	
 	Nevertheless, general conclusion is that Zephyr OS is very powerful and convenient instrument for embedded application development and is highly recommended for use.
+	
 	In the next blog an application development process using Zephyr OS will be described in more detail.
 
