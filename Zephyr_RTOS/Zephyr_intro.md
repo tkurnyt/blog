@@ -31,7 +31,7 @@ Like many other operating systems, Zephyr provides:
 ![Arch](build-config-phase.svg)
 
 
-The Zephyr system architecture. (Source: Zephyr.org)
+The Zephyr system architecture. [Source: zephyrproject.org](https://www.zephyrproject.org/zephyr-an-operating-system-for-iot)
 
 
 Still, what makes Zephyr OS unique as compared to other OS? Below is the brief list of features.
