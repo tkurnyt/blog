@@ -20,20 +20,6 @@ Apache Mynewt OS is another OS to mention in this context. Mynewt comes with a f
 Generally, choice of an embedded OS heavily depends on the specific use case. Therefore, there is no single recipe or single OS of preference to be recommended. Discussion of pros and cons of different OS is out of scope of this blog and focus is made on Zephyr OS specifics and author’s own experience acquired while working with Zephyr OS.
 Like many other operating systems, Zephyr provides:
 
-    - Secure bootloader (MCU Boot)
-    - Kernel
-    - Network stacks
-    - File systems (NFFS, LittleFS, NVS)
-    - Middleware (including OTA mechanism and LwM2M client functionality)
-    - Device drivers
-    - Sensor drivers
-    
-![Arch](build-config-phase.svg)
-
-
-The Zephyr system architecture. [Source: zephyrproject.org](https://www.zephyrproject.org/zephyr-an-operating-system-for-iot)
-
-
 Still, what makes Zephyr OS unique as compared to other OS? Below is the brief list of features.
 
 
